@@ -1,15 +1,16 @@
 __author__ = 'timotei'
-import pygame
+import pygame, pygame.font, pygame.event, pygame.draw
 
 from Game import *
 from Game.Scenes import *
 from Game.Shared import GameConstants
+from Game.Shared import inputbox
 
 
 class Breakout:
 
     def __init__(self):
-        '''
+
         self.__Player1Gold = GameConstants.BUDGET
         self.__Player1Name = GameConstants.P1_NAME  # input NAME
         self.__Player1Choice1 = GameConstants.P1_Choice1  # input function
@@ -19,7 +20,7 @@ class Breakout:
         self.__Player2Name = GameConstants.P2_NAME  # input NAME
         self.__Player2Choice1 = GameConstants.P2_Choice1  # input function
         self.__Player2Choice2 = GameConstants.P2_Choice2  # input function
-        '''
+
         pygame.init()
         pygame.mixer.init()
         pygame.display.set_caption("HTS BATTLE")
@@ -44,11 +45,16 @@ class Breakout:
         while True:
             self.__clock.tick(60)
 
-            self.screen.fill((0, 0, 0))
+            #  self.screen.fill((0, 0, 0))
 
             currentScene = self.__scenes[self.__currentScene]
             currentScene.handleEvents(pygame.event.get())
             currentScene.render()
+
+
+            GameConstants.screen.blit(GameConstants.background, (0, 0))
+            pygame.draw.line(GameConstants.screen, GameConstants.line_color, GameConstants.pos1, GameConstants.pos2, 6)
+
 
             pygame.display.update()
 
