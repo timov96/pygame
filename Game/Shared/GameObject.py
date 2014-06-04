@@ -9,7 +9,7 @@ class GameObject:
         self.__sprite = sprite
 
     def setPostition(self, position):
-        self.__position  = position
+        self.__position = position
 
     def getPostition(self):
         return self.__position

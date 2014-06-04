@@ -7,7 +7,7 @@ from Game.Shared import GameConstants
 from Game.Shared import inputbox
 
 
-class Breakout:
+class Battle:
 
     def __init__(self):
 
@@ -133,4 +133,4 @@ class Breakout:
         sound.stop()
         sound.play()
 
-Breakout().start()
+Battle().start()

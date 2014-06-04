@@ -5,7 +5,7 @@ import pygame
 class GameConstants:
 
     #Global Constants
-    SCREEN_SIZE = [500, 360]  # WIDTH, HEIGHT
+    SCREEN_SIZE = [800, 480]  # WIDTH, HEIGHT
     screen = pygame.display.set_mode((SCREEN_SIZE[0], SCREEN_SIZE[1]), 0, 32)
 
     #Lines Variables
