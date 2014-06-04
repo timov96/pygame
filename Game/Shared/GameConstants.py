@@ -1,6 +1,8 @@
 __author__ = 'timotei'
 import pygame
+import os
 
+from Game import *
 
 class GameConstants:
 
@@ -26,6 +28,7 @@ class GameConstants:
     P1_NAME = "Timotei"
     P1_Choice1 = "Kurama"
     P1_Choice2 = "Susanoo"
+    MONSTER_AVATAR = os.path.join("Assets", "kurama.jpg")
 
     #  Player 2
     P2_NAME = "Flavius"

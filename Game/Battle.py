@@ -13,12 +13,17 @@ class Battle:
 
         self.__Player1Gold = GameConstants.BUDGET
         self.__Player1Name = GameConstants.P1_NAME  # input NAME
-        self.__Player1Choice1 = GameConstants.P1_Choice1  # input function
+        self.__Player1Choice1 = player_1((GameConstants.SCREEN_SIZE[0] / 2,
+                                    GameConstants.SCREEN_SIZE[1] - GameConstants.MONSTER_PIC[1]),
+                                    pygame.image.load(GameConstants.MONSTER_AVATAR))  # input function
+
         self.__Player1Choice2 = GameConstants.P1_Choice2  # input function
 
         self.__Player2Gold = GameConstants.BUDGET
         self.__Player2Name = GameConstants.P2_NAME  # input NAME
         self.__Player2Choice1 = GameConstants.P2_Choice1  # input function
+
+
         self.__Player2Choice2 = GameConstants.P2_Choice2  # input function
 
         pygame.init()
@@ -65,70 +70,82 @@ class Battle:
     ##Player1##
     ###########
     def Player1Gold(self):
-        pass
+        return self.__Player1Gold
 
     def getPlayer1_Monster1_HP(self):
-        pass
+        return self.getPlayer1_Monster1_HP
 
     def getPlayer1_Monster1_Attack(self):
-        pass
+        return self.getPlayer1_Monster1_Attack
 
     def getPlayer1_Monster1_SpAttack(self):
-        pass
+        return self.getPlayer1_Monster1_SpAttack
 
-    def getPlayer1Monster1_Armor(self):
-        pass
+    def getPlayer1_Monster1_Armor(self):
+        return self.getPlayer1_Monster1_Armor()
+
+    def getPlayer1_Monster1_Avatar(self):
+        return self.getPlayer1_Monster1_Avatar()
 
     #Monster2
     def getPlayer1_Monster2_HP(self):
-        pass
+        return self.getPlayer1_Monster2_HP()
 
     def getPlayer1_Monster2_Attack(self):
-        pass
+        return self.getPlayer1_Monster2_Attack()
 
     def getPlayer1_Monster2_SpAttack(self):
-        pass
+        return self.getPlayer1_Monster2_SpAttack()
 
     def getPlayer1_Monster2_Armor(self):
-        pass
+        return self.getPlayer1_Monster2_Armor()
+
+    def getPlayer1_Monster2_Avatar(self):
+        return self.getPlayer1_Monster2_Avatar()
 
     ###########
     ##Player2##
     ###########
     def Player2Gold(self):
-        pass
+        return self.Player2Gold()
 
-    def getPlayer2_Monster_HP(self):
-        pass
+    def getPlayer2_Monster1_HP(self):
+        return self.getPlayer2_Monster1_HP()
 
     def getPlayer2_Monster1_Attack(self):
-        pass
+        return self.getPlayer2_Monster1_Attack()
 
     def getPlayer2_Monster1_SpAttack(self):
-        pass
+        return self.getPlayer2_Monster1_SpAttack()
 
-    def getPlayer2Monster1_Armor(self):
-        pass
+    def getPlayer2_Monster1_Armor(self):
+        return self.getPlayer2_Monster1_Armor()
+
+    def getPlayer2_Monster1_Avatar(self):
+        return self.getPlayer2_Monster1_Avatar()
 
     #Monster2
     def getPlayer2_Monster2_HP(self):
-        pass
+        return self.getPlayer2_Monster2_HP()
 
     def getPlayer2_Monster2_Attack(self):
-        pass
+        return self.getPlayer2_Monster2_Attack()
 
     def getPlayer2_Monster2_SpAttack(self):
-        pass
+        return self.getPlayer2_Monster2_SpAttack()
 
     def getPlayer2_Monster2_Armor(self):
-        pass
+        return self.getPlayer2_Monster2_Armor()
+
+    def getPlayer2_Monster2_Avatar(self):
+        return self.getPlayer2_Monster2_Avatar()
 
     ### Other things
     def reset(self):
         pass
 
     def playSound(self, soundClip):
-        sound = self.__sounds[soundClip]
+        sound = self.__sound[soundClip]
 
         sound.stop()
         sound.play()
