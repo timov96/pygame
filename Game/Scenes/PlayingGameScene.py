@@ -1,6 +1,7 @@
 __author__ = 'timotei'
 import pygame, sys
 from Game.Scenes.Scene import Scene
+from Game import *
 
 
 class PlayingGameScene(Scene):
@@ -10,12 +11,6 @@ class PlayingGameScene(Scene):
 
     def render(self):
         super(PlayingGameScene, self).render()
-
-        game = self.getGame()
-
-        player1 = game.getPosition(10, 10)
-        game.screen.blit(player1.getSprite(), player1.getPostition())
-
 
     def handleEvents(self, events):
         super(PlayingGameScene, self).handleEvents(events)
