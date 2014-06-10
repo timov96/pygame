@@ -16,6 +16,10 @@ class GameConstants:
     pos1 = (SCREEN_SIZE[0] / 2, 0)
     pos2 = (SCREEN_SIZE[0] / 2, SCREEN_SIZE[1])
 
+    #SOUND
+    BG_SOUND = os.path.join("Assets", "soundtrack.mp3")
+
+
     # Fill background
     background = pygame.Surface(screen.get_size())
     background = background.convert()
