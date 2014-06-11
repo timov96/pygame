@@ -5,6 +5,7 @@ import os
 from Game import *
 from Game.Scenes import *
 from Game.Shared import GameConstants
+from Game.Buttons import pygbutton
 
 
 ###########
@@ -18,21 +19,26 @@ def getPlayer1_Name():
 
 def getPlayer1_Monster1_HP():
     font = pygame.font.Font(None, 30)
-    text = font.render("HP:" + str(GameConstants.P1_MONSTER1_HP), 1, (255, 0, 0))
+    text = font.render("HP:" + str(GameConstants.KURAMA_HP), 1, (255, 0, 0))
     GameConstants.screen.blit(text, (GameConstants.SCREEN_SIZE[0] / 16, GameConstants.SCREEN_SIZE[1] / 2.5))
-    # return getPlayer1_Monster1_HP
 
 
-def getPlayer1_Monster1_Attack(self):  # Fix so this will work dynamically
-    return self.getPlayer1_Monster1_Attack
+def getPlayer1_Monster1_Attack():  # Fix so this will work dynamically
+    font = pygame.font.Font(None, 30)
+    text = font.render("Att :" + str(GameConstants.KURAMA_ATTACK), 1, (0, 255, 40))
+    GameConstants.screen.blit(text, (GameConstants.SCREEN_SIZE[0] / 16, GameConstants.SCREEN_SIZE[1] / 2.1))
 
 
-def getPlayer1_Monster1_SpAttack(self):
-    return self.getPlayer1_Monster1_SpAttack
+def getPlayer1_Monster1_SpAttack():
+    font = pygame.font.Font(None, 30)
+    text = font.render("Sp Att :" + str(GameConstants.KURAMA_SP_ATTACK), 1, (255, 177, 40))
+    GameConstants.screen.blit(text, (GameConstants.SCREEN_SIZE[0] / 16, GameConstants.SCREEN_SIZE[1] / 1.8))
 
 
-def getPlayer1_Monster1_Armor(self):
-    return self.getPlayer1_Monster1_Armor()
+def getPlayer1_Monster1_Armor():
+    font = pygame.font.Font(None, 30)
+    text = font.render("Block :" + str(GameConstants.KURAMA_BLOCK), 1, (165, 242, 243))
+    GameConstants.screen.blit(text, (GameConstants.SCREEN_SIZE[0] / 16, GameConstants.SCREEN_SIZE[1] / 1.55))
 
 
 def getPlayer1_Monster1_Avatar():
@@ -74,7 +80,7 @@ def Player1Gold():
 def getPlayer2_Name():
     font = pygame.font.Font(None, 30)
     text = font.render(str(GameConstants.P2_NAME), 1, (0, 255, 0))
-    GameConstants.screen.blit(text, (GameConstants.SCREEN_SIZE[0] / 1.78, GameConstants.SCREEN_SIZE[1] / 1.1))
+    GameConstants.screen.blit(text, (GameConstants.SCREEN_SIZE[0] / 1.85, GameConstants.SCREEN_SIZE[1] / 1.1))
 
 
 def Player2Gold():
@@ -85,21 +91,27 @@ def Player2Gold():
 
 def getPlayer2_Monster1_HP():
     font = pygame.font.Font(None, 30)
-    text = font.render("HP:" + str(GameConstants.P2_MONSTER1_HP), 1, (255, 0, 0))
+    text = font.render("HP:" + str(GameConstants.SUSANOO_HP), 1, (255, 0, 0))
     GameConstants.screen.blit(text, (GameConstants.SCREEN_SIZE[0] / 1.78, GameConstants.SCREEN_SIZE[1] / 2.5))
     # return getPlayer2_Monster1_HP
 
 
 def getPlayer2_Monster1_Attack():
-    return getPlayer2_Monster1_Attack()
+    font = pygame.font.Font(None, 30)
+    text = font.render("Att :" + str(GameConstants.SUSANOO_ATTACK), 1, (0, 255, 40))
+    GameConstants.screen.blit(text, (GameConstants.SCREEN_SIZE[0] / 1.78, GameConstants.SCREEN_SIZE[1] / 2.1))
 
 
 def getPlayer2_Monster1_SpAttack():
-    return getPlayer2_Monster1_SpAttack()
+    font = pygame.font.Font(None, 30)
+    text = font.render("Sp Att :" + str(GameConstants.SUSANOO_SP_ATTACK), 1, (255, 177, 40))
+    GameConstants.screen.blit(text, (GameConstants.SCREEN_SIZE[0] / 1.78, GameConstants.SCREEN_SIZE[1] / 1.8))
 
 
 def getPlayer2_Monster1_Armor():
-    return getPlayer2_Monster1_Armor()
+    font = pygame.font.Font(None, 30)
+    text = font.render("Block :" + str(GameConstants.SUSANOO_BLOCK), 1, (165, 242, 243))
+    GameConstants.screen.blit(text, (GameConstants.SCREEN_SIZE[0] / 1.78, GameConstants.SCREEN_SIZE[1] / 1.55))
 
 
 def getPlayer2_Monster1_Avatar():
@@ -132,6 +144,32 @@ def getPlayer2_Monster2_Avatar(self):
 pygame.mixer.init()
 pygame.mixer.music.load(GameConstants.BG_SOUND)
 pygame.mixer.music.play(loops=-1)
+
+# Buttons
+P1_SPECIAL_ATTACK = pygbutton.PygButton((197, 300, 200, 30), ' Special Attack')
+P1_ATTACK = pygbutton.PygButton((0, 300, 200, 30), 'Attack')
+
+P2_SPECIAL_ATTACK = pygbutton.PygButton((405, 300, 200, 30), ' Special Attack')
+P2_ATTACK = pygbutton.PygButton((600, 300, 200, 30), 'Attack')
+
+
+# Start game
+
+def game_start():
+        GameConstants.P1_TURN = True
+
+        while GameConstants.P1_TURN:
+            GameConstants.screen.blit(GameConstants.P1_INDICATOR, (GameConstants.SCREEN_SIZE[0] / 8, GameConstants.SCREEN_SIZE[1] / 1.14))
+
+
+            P1_ATTACK.draw(GameConstants.screen)
+            P1_SPECIAL_ATTACK.draw(GameConstants.screen)
+
+            P2_ATTACK.draw(GameConstants.screen)
+            P2_SPECIAL_ATTACK.draw(GameConstants.screen)
+
+            GameConstants.P1_TURN = False
+
 
 ###
 #Actual Class Begins
@@ -170,6 +208,7 @@ class Battle:
         self.__currentScene = 0
 
 
+
     def start(self):
         while True:
             self.__clock.tick(30)
@@ -186,15 +225,22 @@ class Battle:
 
             # Adding the text and pictures for Player1
             getPlayer1_Monster1_Avatar()
-            Player1Gold()
+            getPlayer1_Monster1_Armor()
+            getPlayer1_Monster1_Attack()
+            getPlayer1_Monster1_SpAttack()
             getPlayer1_Monster1_HP()
             getPlayer1_Name()
 
+
             # Adding the text and pictures for Player2
             getPlayer2_Monster1_Avatar()
-            Player2Gold()
+            getPlayer2_Monster1_Armor()
+            getPlayer2_Monster1_Attack()
+            getPlayer2_Monster1_SpAttack()
             getPlayer2_Monster1_HP()
             getPlayer2_Name()
+
+            game_start()
 
             pygame.display.update()
 

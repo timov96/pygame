@@ -1,7 +1,6 @@
 __author__ = 'timotei'
 import pygame, sys
 from Game.Scenes.Scene import Scene
-from Game import *
 
 
 class PlayingGameScene(Scene):
@@ -15,10 +14,8 @@ class PlayingGameScene(Scene):
     def handleEvents(self, events):
         super(PlayingGameScene, self).handleEvents(events)
 
+
         for event in events:
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-            if event.type == pygame.K_ESCAPE:
+            if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
                 pygame.quit()
                 sys.exit()
